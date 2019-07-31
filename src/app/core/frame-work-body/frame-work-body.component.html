@@ -1,0 +1,21 @@
+<div class="clearfix top-navig p-3 d-flex align-items-center">
+  <div class="oper_sidenav_profile mr-4">
+    <img [src]="profileImage" class="logo" alt="prof_img">
+  </div>
+
+  <button class="side-toggle-btn" mat-icon-button mat-button (click)="drawer.toggle()">
+    <mat-icon class="md-24" aria-label="Open Sidebar Menu">menu</mat-icon>
+  </button>
+</div>
+
+
+<mat-drawer-container class="content-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="{{sideNaveMode}}" opened="{{sidenavStatus}}">
+    <app-left-nav-bar></app-left-nav-bar>
+  </mat-drawer>
+  <div class="sidenav-content clearfix p-4 app-content-body">
+    <div class="route-pages">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

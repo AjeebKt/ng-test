@@ -1,0 +1,49 @@
+<div class="number-list">
+  <div class="clearfix mb-3">
+    <button class="float-right btn btn-primary" (click)="add()">Add</button>
+  </div>
+
+  <div class="content-box p-3 mb-4 shadow-sm">
+    <!-- <input [(ngModel)]="listFilter" (ngModelChange)="onSearchValueChange($event)"> -->
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Find cheapest operator" aria-label="Find cheapest operator"
+        aria-describedby="basic-addon2" [(ngModel)]="listFilter" (ngModelChange)="onSearchValueChange($event)">
+      <div class="input-group-append" (click)="clearSearchInput()">
+        <button class="btn btn-outline-secondary" *ngIf="listFilter" type="button">
+          <span class="fa fa-close"></span>
+        </button>
+        <button class="btn btn-outline-secondary" *ngIf="!listFilter" type="button">
+          <span class="fa fa-search"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-box p-3 mb-4 shadow-sm overflow-auto text-truncate text-center text-md-left">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="border-0">Operator</th>
+          <th class="border-0">Number Prefix</th>
+          <th class="border-0">Cost</th>
+          <th class="border-0"></th>
+          <th class="border-0"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filteredData">
+          <td>{{item.operator}}</td>
+          <td>{{item.numberPrefix}}</td>
+          <td>{{item.cost}}</td>
+          <td>
+            <button type="button" (click)="edit(item)" class="btn fa fa-edit mr-3"></button>
+            <button type="button" (click)="delete(item)" class="btn fa fa-trash"></button>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

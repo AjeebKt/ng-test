@@ -1,0 +1,33 @@
+<h4 class="mb-4">{{pageTitle}}</h4>
+
+<div class="px-3 py-4 bg-white shadow-sm">
+  <form [formGroup]="addEditForm" appFocusOnError #focusOnError="appFocusOnError">
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-3">
+        <label for="prefix">Prefix</label>
+        <input type="text" for="prefix" formControlName="prefix" class="form-control" placeholder="Prefix" appValidatorTrigger>
+        <show-errors [control]="addEditContorls.prefix" field="Invalid Prefix"></show-errors>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <label for="cost">Cost</label>
+        <input type="text" for="cost" formControlName="cost" class="form-control" placeholder="Cost">
+        <show-errors [control]="addEditContorls.cost" field="Invalid Cost"></show-errors>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <label for="operator">Operator</label>
+        <select for="operator" formControlName="operator" class="form-control custom-select" placeholder="Operator">
+          <option value="Operator A">Operator A</option>
+          <option value="Operator B">Operator B</option>
+          <option value="Operator C">Operator C</option>
+        </select>
+        <show-errors [control]="addEditContorls.operator" field="Invalid Operator"></show-errors>
+      </div>
+      <div class="col-12">
+        <div class="float-right">
+          <button class="btn btn-light mr-3" (click)="cancelAddUser()">Cancel</button>
+          <button type="button" (click)="onSubmit()" class="btn btn-outline-primary" appButtonSubmit [form]="focusOnError">{{submitText}}</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
